@@ -9,12 +9,14 @@ class CinemaHallController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * TODO verifikacija ko je?
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        //
+        $cinemaHalls = CinemaHall::all();
+
+        return response()->json(['cinemaHalls' => $cinemaHalls]);
     }
 
     /**
