@@ -27,6 +27,7 @@ class StoreMovieRequest extends FormRequest
         return [
             'name' => ['required'],
             'description' => [],
+            'genre' => ['required'],
             'length' => ['required', 'integer', 'min:1'],
         ];
     }

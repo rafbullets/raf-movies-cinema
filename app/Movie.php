@@ -6,12 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    protected $guarded = ['id'];
 
-    public function genres()
-    {
-        return $this->belongsToMany(Genre::class);
-    }
+    protected $fillable = ['name', 'description', 'length', 'genre'];
 
     public function projections()
     {

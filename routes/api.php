@@ -29,3 +29,5 @@ Route::post('projections', 'ProjectionController@store');
 Route::put('projections/{projection}', 'ProjectionController@update');
 Route::delete('projections/{projection}', 'ProjectionController@delete');
 
+Route::get('cinema-halls', 'CinemaHallController@index');
+Route::get('cinema-halls/{cinema-hall}', 'CinemaHallController@show');

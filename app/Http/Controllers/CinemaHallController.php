@@ -20,13 +20,14 @@ class CinemaHallController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param  \App\CinemaHall  $cinema
+     * @return CinemaHall
      */
-    public function create()
+    public function show(CinemaHall $cinema)
     {
-        //
+        return $cinema;
     }
 
     /**
@@ -36,28 +37,6 @@ class CinemaHallController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CinemaHall  $cinema
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CinemaHall $cinema)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CinemaHall  $cinema
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CinemaHall $cinema)
     {
         //
     }
@@ -80,7 +59,7 @@ class CinemaHallController extends Controller
      * @param  \App\CinemaHall  $cinema
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CinemaHall $cinema)
+    public function delete(CinemaHall $cinema)
     {
         //
     }

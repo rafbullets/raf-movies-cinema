@@ -24,7 +24,10 @@ class StoreProjectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'movie_id' => ['required', 'integer', 'min:1'],
+            'cinema_hall_id' => ['required', 'integer', 'min:1'],
+            'start_at' => ['required'],
+            'ticket_price' => ['required'],
         ];
     }
 }

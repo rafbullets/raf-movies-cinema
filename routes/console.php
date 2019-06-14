@@ -1,5 +1,6 @@
 <?php
 
+use App\Movie;
 use Illuminate\Foundation\Inspiring;
 
 /*
@@ -19,6 +20,6 @@ Artisan::command('inspire', function () {
 	"description"=> "asdf",
 	"length" => 120
     ]);
-
+    $a->genres()->attach([1,2]);
     dd($a);
 })->describe('Display an inspiring quote');
