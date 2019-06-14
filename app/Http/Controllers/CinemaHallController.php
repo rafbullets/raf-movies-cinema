@@ -9,7 +9,6 @@ class CinemaHallController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * TODO verifikacija ko je?
      * @return \Illuminate\Http\JsonResponse
      */
     public function index()

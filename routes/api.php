@@ -17,15 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// TODO middleware
 
-Route::post('movies', 'MovieController@store');
-Route::put('movies/{movie}', 'MovieController@update');
-Route::delete('movies/{movie}', 'MovieController@delete');
-Route::post('projections', 'ProjectionController@store');
-Route::put('projections/{projection}', 'ProjectionController@update');
-Route::delete('projections/{projection}', 'ProjectionController@delete');
-
+Route::middleware(\App\Http\Middleware\IsAdmin::class)->group(function () {
+    Route::post('movies', 'MovieController@store');
+    Route::put('movies/{movie}', 'MovieController@update');
+    Route::delete('movies/{movie}', 'MovieController@delete');
+    Route::post('projections', 'ProjectionController@store');
+    Route::put('projections/{projection}', 'ProjectionController@update');
+    Route::delete('projections/{projection}', 'ProjectionController@delete');
+});
 Route::get('projections', 'ProjectionController@index');
 Route::get('projections/{projection}', 'ProjectionController@show');
 Route::get('movies', 'MovieController@index');
