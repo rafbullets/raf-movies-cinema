@@ -8,6 +8,8 @@ class Projection extends Model
 {
     protected $guarded = ['id'];
 
+    protected $with = ['cinemaHall'];
+
     public function movie()
     {
         return $this->belongsTo(Movie::class);

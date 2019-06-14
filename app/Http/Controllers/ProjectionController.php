@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProjectionRequest;
 use App\Movie;
 use App\Projection;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class ProjectionController extends Controller
 {

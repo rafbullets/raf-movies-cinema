@@ -17,9 +17,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $all = Movie::all();
+        $movies = Movie::paginate(1);
 
-        return response()->json(['movies' => $all]);
+
+        return response()->json(['movies' => $movies]);
     }
 
     /**
