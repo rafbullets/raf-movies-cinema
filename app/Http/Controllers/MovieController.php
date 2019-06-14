@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
 use App\Movie;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 
 class MovieController extends Controller
 {
@@ -17,8 +17,15 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate(1);
+        $sortBy = Input::get('sortBy', 'name');
+        $sortOrder = Input::get('sortOrder', 'asc');
+        $searchBy = Input::get('searchBy', 'name');
+        $searchValue = '%' . Input::get('searchValue', '') . '%';
+        $paginate = Input::get('paginate', 2);
 
+        $movies = Movie::where($searchBy, 'LIKE', $searchValue)
+                        ->orderBy($sortBy, $sortOrder)
+                        ->paginate($paginate);
 
         return response()->json(['movies' => $movies]);
     }

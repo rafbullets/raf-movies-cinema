@@ -8,6 +8,7 @@ use App\Movie;
 use App\Projection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
 
 class ProjectionController extends Controller
 {
@@ -18,7 +19,17 @@ class ProjectionController extends Controller
      */
     public function index()
     {
-        return Projection::all();
+        $sortBy = Input::get('sortBy', 'name');
+        $sortOrder = Input::get('sortOrder', 'asc');
+        $searchBy = Input::get('searchBy', 'name');
+        $searchValue = '%' . Input::get('searchValue', '') . '%';
+        $paginate = Input::get('paginate', 2);
+
+        $projections = Projection::where($searchBy, 'LIKE', $searchValue)
+                            ->orderBy($sortBy, $sortOrder)
+                            ->paginate($paginate);
+
+        return response()->json(['projections' => $projections]);
     }
 
     /**
