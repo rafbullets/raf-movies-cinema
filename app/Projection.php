@@ -17,6 +17,6 @@ class Projection extends Model
 
     public function cinemaHall()
     {
-        return $this->belongsTo(Movie::class);
+        return $this->belongsTo(CinemaHall::class);
     }
 }
