@@ -2,84 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMovieRequest;
+use App\Http\Requests\UpdateMovieRequest;
 use App\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class MovieController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-        //
-    }
+        $all = Movie::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(['movies' => $all]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreMovieRequest $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreMovieRequest $request)
     {
-        //
+        $movie = Movie::create($request->all());
+
+        return response()->json($movie, 201);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param Movie $movie
+     * @return Movie
      */
     public function show(Movie $movie)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Movie $movie)
-    {
-        //
+        return $movie;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param UpdateMovieRequest $request
+     * @param \App\Movie $movie
+     * @return void
      */
-    public function update(Request $request, Movie $movie)
+    public function update(UpdateMovieRequest $request, Movie $movie)
     {
-        //
+        $movie->update($request->all());
+
+        $updated = Movie::find($movie->id);
+        return response()->json($updated, 200);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Movie  $movie
-     * @return \Illuminate\Http\Response
+     * @param Movie $movie
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
-    public function destroy(Movie $movie)
+    public function delete(Movie $movie)
     {
-        //
+        $movie->delete();
+
+        return response()->json(null, 204);
     }
 }

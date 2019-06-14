@@ -14,5 +14,11 @@ use Illuminate\Foundation\Inspiring;
 */
 
 Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+    $a = \App\Movie::create([
+        "name"=> "Hello World",
+	"description"=> "asdf",
+	"length" => 120
+    ]);
+
+    dd($a);
 })->describe('Display an inspiring quote');
