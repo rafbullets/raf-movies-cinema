@@ -8,7 +8,7 @@ class Projection extends Model
 {
     protected $guarded = ['id'];
 
-    protected $with = ['cinemaHall'];
+    protected $with = ['cinemaHall', 'movie'];
 
     public function movie()
     {
