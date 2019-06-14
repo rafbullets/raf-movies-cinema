@@ -31,5 +31,5 @@ Route::get('projections/{projection}', 'ProjectionController@show');
 Route::get('movies', 'MovieController@index');
 Route::get('movies/{movie}', 'MovieController@show');
 Route::get('cinema-halls', 'CinemaHallController@index');
-Route::get('cinema-halls/{cinema-hall}', 'CinemaHallController@show');
+Route::get('cinema-halls/{hall}', 'CinemaHallController@show');
 

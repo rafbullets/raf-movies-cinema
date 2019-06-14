@@ -24,9 +24,9 @@ class CinemaHallController extends Controller
      * @param  \App\CinemaHall  $cinema
      * @return CinemaHall
      */
-    public function show(CinemaHall $cinema)
+    public function show(CinemaHall $hall)
     {
-        return $cinema;
+        return $hall;
     }
 
     /**
